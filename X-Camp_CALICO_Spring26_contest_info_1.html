@@ -9,7 +9,7 @@
   gtag('js', new Date());
   gtag('config', 'G-L64HE50P6M');
 </script>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CALICO Spring '26 – Contest Guide with X-Camp Courses</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -121,6 +121,38 @@
   .legend b { color: #1a3a6b; }
   .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 4px 20px; margin-top: 6px; }
   .legend-row { display: flex; align-items: baseline; gap: 6px; }
+
+  /* ── Mobile layout ── */
+  @media (max-width: 620px) {
+    html { scroll-padding-top: 56px; }
+    .toc-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 8px; gap: 4px; margin-left: -4px; margin-right: -4px; }
+    .toc-nav a { white-space: nowrap; flex-shrink: 0; }
+    .toc-nav .toc-label { display: none; }
+    .banner-left h1 { font-size: 17px; }
+    .finder { padding: 14px; }
+    .finder-btns button { flex: 1 1 calc(50% - 8px); padding: 8px 6px; }
+    .collapsible-header { padding: 10px 12px; font-size: 13.5px; }
+    .back-to-top { bottom: 16px; right: 16px; }
+    /* problem table → stacked cards */
+    .table-wrap { overflow: visible; }
+    table.diff { min-width: 0; }
+    table.diff thead { display: none; }
+    table.diff, table.diff tbody, table.diff tr, table.diff td { display: block; width: 100%; }
+    table.diff tr { border: 1px solid #d9d0a0; border-radius: 5px; margin-bottom: 10px; background: #fff9e8; overflow: hidden; }
+    table.diff tr.bonus { border-left: 4px solid #e8a020; }
+    table.diff td, table.diff tr:nth-child(even) td { border-bottom: none; padding: 4px 12px; background: transparent; }
+    table.diff tr.bonus td:first-child, table.diff tr.bonus td:nth-child(2) { padding-left: 12px; }
+    table.diff td:nth-child(1) { display: inline-block; width: auto; font-weight: 700; padding-top: 8px; padding-right: 0 !important; }
+    table.diff td:nth-child(2) { display: inline-block; width: auto; font-weight: 700; font-size: 14px; padding-top: 8px; padding-left: 6px !important; }
+    table.diff td:nth-child(4), table.diff td:nth-child(5) { display: inline-block; width: auto; padding-right: 0 !important; }
+    table.diff td:nth-child(5) { padding-left: 6px !important; }
+    table.diff tbody tr:hover td { background: transparent !important; }
+    table.diff tr.hl { background: #e0f0e0; border-color: #8cc08c; }
+    table.diff tr.hl td { background: transparent !important; }
+    table.diff td:nth-child(6) { padding-bottom: 10px; }
+    table.diff td:nth-child(3)::before { content: "Concept: "; font-weight: 700; color: #1a3a6b; }
+    table.diff td:nth-child(6)::before { content: "X-Camp: "; font-weight: 700; color: #1a3a6b; }
+  }
 
   @media print {
     body { background: #fff; padding: 0; }
@@ -448,7 +480,7 @@
     <b>&#129504; Resources</b>&nbsp;&nbsp;
     Official site: <a href="https://calico.cs.berkeley.edu/" target="_blank">calico.cs.berkeley.edu</a> &nbsp;|&nbsp;
     Spring &rsquo;26 problems: <a href="https://calicojudge.com/public/problems" target="_blank">calicojudge.com/public/problems</a> &nbsp;|&nbsp;
-    X-Camp courses: <a href="https://x-camp.academy/courses/home" target="_blank">x-camp.academy/courses</a> &nbsp;|&nbsp;
+    X-Camp courses: <a href="https://x-camp.academy/courses/home?utm_source=calico_guide&amp;utm_medium=referral&amp;utm_campaign=calico_spring26" target="_blank">x-camp.academy/courses</a> &nbsp;|&nbsp;
     Study: <a href="https://usaco.guide/" target="_blank">usaco.guide</a>
   </div>
 
@@ -470,10 +502,12 @@
 </div>
 
 <script>
-  new QRCode(document.getElementById("qrcode"), {
-    text: "Discord us", width: 96, height: 96,
-    colorDark: "#1a3a6b", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M
-  });
+  try {
+    new QRCode(document.getElementById("qrcode"), {
+      text: "Discord us", width: 96, height: 96,
+      colorDark: "#1a3a6b", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M
+    });
+  } catch (e) { /* QR library unavailable – rest of page still works */ }
 
   function toggleCollapse(header) {
     var body = header.nextElementSibling;
