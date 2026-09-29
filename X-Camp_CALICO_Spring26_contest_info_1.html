@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L64HE50P6M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L64HE50P6M');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALICO Spring '26 – Contest Guide with X-Camp Courses</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Arial, sans-serif; background: #e8e8e8; display: flex; justify-content: center; padding: 32px 16px; }
+  .card { background: #fdf8dc; border: 2px solid #4a90c4; border-radius: 6px; max-width: 1060px; width: 100%; padding: 28px 32px; line-height: 1.7; color: #1a1a1a; font-size: 15px; }
+  @media (max-width: 620px) { .card { padding: 18px 14px; } body { padding: 16px 8px; } }
+
+  .toc-nav { background: #1a3a6b; border-radius: 4px; padding: 8px 14px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .toc-nav a { color: #b8d0f0; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 3px 8px; border-radius: 3px; transition: background .2s, color .2s; }
+  .toc-nav a:hover, .toc-nav a.active { background: rgba(255,255,255,.15); color: #fff; }
+  .toc-nav .toc-label { color: #7da8d8; font-size: 11px; font-weight: 400; letter-spacing: .5px; text-transform: uppercase; }
+
+  .banner { background: #1a3a6b; color: #fff; border-radius: 4px; padding: 18px 22px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  @media (max-width: 620px) { .banner { flex-direction: column; align-items: flex-start; } }
+  .banner-left h1 { font-size: 20px; font-weight: 700; }
+  .banner-left p  { font-size: 13px; color: #b8d0f0; margin-top: 4px; }
+
+  .qr-block { text-align: center; flex-shrink: 0; }
+  .qr-block .qr-label { font-size: 12px; color: #b8d0f0; margin-bottom: 6px; letter-spacing: .4px; }
+  .qr-block .qr-box { background: #fff; border-radius: 6px; padding: 6px; display: inline-block; }
+  #qrcode img, #qrcode canvas { display: block; }
+  .qr-block .qr-sublabel { font-size: 11px; color: #7da8d8; margin-top: 5px; }
+
+  .resources-box { background: #fffbe6; border-left: 4px solid #e8a020; padding: 12px 16px; border-radius: 3px; margin-bottom: 22px; font-size: 14px; }
+  .resources-box a { color: #1a6fbf; }
+
+  .diff-note { background: #fff3e0; border: 1px solid #e8a020; border-left: 4px solid #e8a020; border-radius: 4px; padding: 11px 16px; font-size: 13.5px; color: #5a3800; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px; }
+  .diff-note .icon { font-size: 17px; margin-top: 1px; flex-shrink: 0; }
+
+  .sh { font-size: 15.5px; font-weight: 700; margin: 22px 0 8px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 20px; }
+  table.diff { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 13px; }
+  table.diff th { background: #1a3a6b; color: #fff; padding: 9px 10px; text-align: left; }
+  table.diff td { padding: 8px 10px; border-bottom: 1px solid #d9d0a0; vertical-align: top; line-height: 1.45; }
+  table.diff tr:nth-child(even) td { background: #faf5d0; }
+  table.diff tbody tr { transition: background .15s; }
+  table.diff tbody tr:hover td { background: #e8f0ff !important; }
+  table.diff tr.bonus td:first-child, table.diff tr.bonus td:nth-child(2) { padding-left: 22px; }
+  table.diff tr.hl td { background: #e0f0e0 !important; }
+  table.diff a { color: #1a6fbf; text-decoration: none; }
+  table.diff a:hover { text-decoration: underline; }
+  .ts { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 1px 6px; border-radius: 3px; background: #fff; border: 1px solid #c8be80; color: #6a5a10; white-space: nowrap; }
+  .ts.bonus { border-color: #e8a020; color: #a05a00; background: #fff6e6; }
+
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; color: #fff; white-space: nowrap; }
+  .b-pre    { background: #888; }
+  .b-bronze { background: #b5651d; }
+  .b-silver { background: #607d8b; }
+  .b-gold   { background: #c79200; color: #1a1a1a; }
+  .b-plat   { background: #2e7d6e; }
+  .b-pp     { background: #6a1a8a; }
+
+  .xc { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 3px; background: #e3f0fb; color: #1a3a6b; border: 1px solid #9ab8e0; white-space: nowrap; margin: 1px 2px 1px 0; }
+
+  .levels { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 620px) { .levels { grid-template-columns: 1fr; } }
+  .level-card { background: #fff9e8; border: 1px solid #c8be80; border-radius: 5px; padding: 13px 15px; font-size: 13.5px; }
+  .level-card .lhead { font-weight: 700; font-size: 13.5px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+  .format-box { background: #eef5ff; border: 1px solid #9ab8e0; border-radius: 4px; padding: 14px 18px; font-size: 14px; margin-bottom: 20px; }
+  .format-box p { margin-bottom: 6px; }
+  .format-box p:last-child { margin-bottom: 0; }
+
+  .progress-bar { display: flex; border-radius: 6px; overflow: hidden; margin-bottom: 20px; height: 40px; font-size: 11px; font-weight: 700; line-height: 1.25; text-align: center; }
+  .progress-bar .seg { display: flex; align-items: center; justify-content: center; color: #fff; padding: 0 4px; }
+  .progress-bar .seg.s-pre    { background: #888; flex: 2; }
+  .progress-bar .seg.s-bronze { background: #b5651d; flex: 3; }
+  .progress-bar .seg.s-silver { background: #607d8b; flex: 4; }
+  .progress-bar .seg.s-gold   { background: #c79200; color: #1a1a1a; flex: 6; }
+  .progress-bar .seg.s-plat   { background: #2e7d6e; flex: 3; }
+  .progress-bar .seg.s-pp     { background: #6a1a8a; flex: 2; }
+  @media (max-width: 620px) { .progress-bar { font-size: 9px; height: 46px; } }
+
+  .finder { background: #eef5ff; border: 2px solid #4a90c4; border-radius: 6px; padding: 16px 20px; margin-bottom: 22px; }
+  .finder h3 { font-size: 14px; color: #1a3a6b; margin-bottom: 10px; }
+  .finder-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .finder-btns button { font-size: 12px; padding: 6px 14px; border: 1px solid #9ab8e0; border-radius: 4px; background: #fff; color: #1a3a6b; cursor: pointer; font-weight: 600; transition: all .2s; }
+  .finder-btns button:hover { background: #d6e8ff; }
+  .finder-btns button.selected { background: #1a3a6b; color: #fff; border-color: #1a3a6b; }
+  .finder-result { background: #fff9e8; border: 1px solid #c8be80; border-radius: 4px; padding: 12px 16px; font-size: 13.5px; display: none; }
+  .finder-result.visible { display: block; }
+  .finder-result b { color: #1a3a6b; }
+
+  .collapsible { margin-bottom: 10px; }
+  .collapsible-header { background: #f0f4ff; border: 1px solid #b0c4e8; border-radius: 4px; padding: 10px 16px; cursor: pointer; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; transition: background .2s; user-select: none; }
+  .collapsible-header:hover { background: #d6e8ff; }
+  .collapsible-header .arrow { transition: transform .25s; font-size: 12px; }
+  .collapsible-header.open .arrow { transform: rotate(90deg); }
+  .collapsible-body { max-height: 0; overflow: hidden; transition: max-height .3s ease-out; }
+  .collapsible-body.open { max-height: 500px; }
+  .collapsible-inner { padding: 10px 16px 6px; font-size: 14px; }
+
+  ul.tips { margin: 5px 0 0 20px; }
+  ul.tips li { margin-bottom: 3px; }
+
+  .back-to-top { position: fixed; bottom: 28px; right: 28px; background: #1a3a6b; color: #fff; border: none; border-radius: 50%; width: 42px; height: 42px; font-size: 20px; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.25); display: none; align-items: center; justify-content: center; z-index: 200; }
+  .back-to-top:hover { background: #2a5a9b; }
+
+  .footer-note { font-size: 12px; color: #666; border-top: 1px solid #c8be80; margin-top: 20px; padding-top: 12px; text-align: center; }
+  .footer-note a { color: #1a6fbf; }
+  .orange { color: #c87000; font-weight: 700; }
+  .note { font-size: 12px; color: #555; font-style: italic; }
+
+  .legend { background: #f0f4ff; border: 1px solid #b0c4e8; border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; }
+  .legend b { color: #1a3a6b; }
+  .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 4px 20px; margin-top: 6px; }
+  .legend-row { display: flex; align-items: baseline; gap: 6px; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .card { border: none; max-width: 100%; padding: 12px; }
+    .toc-nav, .back-to-top, .finder, .qr-block { display: none !important; }
+    .banner, table.diff th, .badge, .xc, .progress-bar .seg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .collapsible-body { max-height: none !important; overflow: visible !important; }
+    .collapsible-header .arrow { display: none; }
+    table.diff { min-width: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <nav class="toc-nav" id="toc">
+    <span class="toc-label">Jump to:</span>
+    <a href="#sec-format">Format</a>
+    <a href="#sec-difficulty">Difficulty</a>
+    <a href="#sec-finder">Find My Level</a>
+    <a href="#sec-problems">Problems</a>
+    <a href="#sec-prepare">Prepare</a>
+    <a href="#sec-courses">Courses</a>
+    <a href="#sec-resources">Resources</a>
+  </nav>
+
+  <div class="banner">
+    <div class="banner-left">
+      <h1>&#128008; CALICO Spring &rsquo;26 – Contest Guide + X-Camp Course Roadmap</h1>
+      <p>California Informatics Competition &middot; Hosted by students at UC Berkeley &middot; 12 problems / 20 test sets &middot; Online</p>
+    </div>
+    <div class="qr-block">
+      <div class="qr-label">💬 Discord Us</div>
+      <div class="qr-box"><div id="qrcode"></div></div>
+      <div class="qr-sublabel">Scan to join &amp; ask questions</div>
+    </div>
+  </div>
+
+  <!-- Contest Format -->
+  <div class="sh" id="sec-format">&#128203; Contest Format</div>
+  <div class="format-box">
+    <p><b>What it is:</b> A biannual (fall &amp; spring) team programming competition for students up to 12th grade, run by UC Berkeley students.</p>
+    <p><b>Structure:</b> 12 problems, most with a <b>main</b> test set plus one or more <span class="orange">bonus test sets</span> with larger constraints. Every test set is judged <b>pass/fail</b> &mdash; you must pass all cases in a set to earn it.</p>
+    <p><b>Limits:</b> Most problems: 1 s / 250 MB. Problem 11: 2 s / 1 GB. Problem 12: 10 s / 250 MB. Language time factors apply <span class="note">(Python gets extra time, but can still TLE on bonus sets)</span>.</p>
+    <p><b>Strategy:</b> Main test sets are usually much easier than their bonuses &mdash; sweep all mains first, then come back for bonuses.</p>
+    <p><b>Special:</b> Problem 12 is an <b>open-ended optimization</b> problem (score by quality of answer, not exact correctness) with Easy / Medium / Hard tiers.</p>
+    <p><b>Next contest:</b> <span class="orange">CALICO Fall &rsquo;26 &mdash; November 8, 2026.</span> Spring &rsquo;26 problems are open for practice on the CALICO judge.</p>
+  </div>
+
+  <!-- Difficulty Overview -->
+  <div class="sh" id="sec-difficulty">&#128202; Difficulty Overview <span class="note" style="font-weight:400">(by test set)</span></div>
+
+  <div class="progress-bar">
+    <div class="seg s-pre">1&ndash;2<br>Pre-Bronze</div>
+    <div class="seg s-bronze">3&ndash;5 main<br>Bronze</div>
+    <div class="seg s-silver">6, 7, 8, 8b1<br>Silver</div>
+    <div class="seg s-gold">4b, 5b, 8b2, 9, 11, 12E<br>Gold</div>
+    <div class="seg s-plat">8b3, 10, 11b<br>Platinum</div>
+    <div class="seg s-pp">12M/H<br>Plat+</div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-pre">PRE-BRONZE</span> Warm-up (1&ndash;2)</div>
+      Perimeter arithmetic to count laps; step-by-step simulation of power loss with periodic restores. Pure implementation.
+      <br><b>Take first:</b> <span class="xc">101P</span> <span class="xc">102P</span>
+    </div>
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-bronze">BRONZE</span> Entry (3, 4 main, 5 main)</div>
+      Two-pointer subsequence matching; brute-force laser simulation on a small wrapping grid; small-case reasoning on a 2&times;N grid.
+      <br><b>Take first:</b> <span class="xc">102P</span> <span class="xc">200</span>
+    </div>
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-silver">SILVER</span> Intermediate (6, 7, 8 main, 8b1)</div>
+      3D projections &amp; counting (max/min volume); constructive grid pattern with mod 5; multi-source BFS spreading simulation.
+      <br><b>Take first:</b> <span class="xc">202</span> <span class="xc">300</span>
+    </div>
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-gold">GOLD</span> Advanced (4b, 5b, 8b2, 9, 11, 12 Easy)</div>
+      Modular inverse / CRT jumps; median-style greedy/DP; exact fraction probability flow through splitters; binary search on Manhattan radius.
+      <br><b>Take first:</b> <span class="xc">301</span> <span class="xc">400H</span> <span class="xc">501</span>
+    </div>
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-plat">PLATINUM</span> Expert (8b3, 10, 11b)</div>
+      Closed-form geometry of Manhattan wavefronts at &plusmn;4&times;10<sup>8</sup>; constructing a factory for P/(2<sup>A</sup>3<sup>B</sup>); secondary-cost optimization over seat windows.
+      <br><b>Take first:</b> <span class="xc">500H</span> <span class="xc">501</span> <span class="xc">502</span>
+    </div>
+    <div class="level-card">
+      <div class="lhead"><span class="badge b-pp">PLATINUM+</span> Elite (12 Medium / Hard)</div>
+      Reconstruct a multiplication table from up to 2&times;10<sup>6</sup> noisy constraints: log transform, robust least squares, outlier discarding.
+      <br><b>Take first:</b> <span class="xc">602H</span> <span class="xc">603H</span>
+    </div>
+  </div>
+
+  <!-- Find My Level -->
+  <div class="finder" id="sec-finder">
+    <h3>🎯 Find My Level — Which test sets should I target?</h3>
+    <p style="font-size:13px; color:#555; margin-bottom:10px;">Click your current X-Camp course level:</p>
+    <div class="finder-btns">
+      <button onclick="showLevel('101', this)">CS101P / 102P</button>
+      <button onclick="showLevel('200', this)">CS200 / 201 / 202</button>
+      <button onclick="showLevel('300', this)">CS300 / 301 / 302</button>
+      <button onclick="showLevel('400', this)">CS400H / 401H / 501</button>
+      <button onclick="showLevel('500', this)">CS500H / 502</button>
+      <button onclick="showLevel('600', this)">CS602 / 603</button>
+    </div>
+    <div class="finder-result" id="finder-result"></div>
+  </div>
+
+  <!-- Problem table -->
+  <div class="sh" id="sec-problems">&#128202; Spring &rsquo;26 Problem List &mdash; USACO Level &amp; Recommended X-Camp Courses</div>
+  <div class="table-wrap">
+  <table class="diff">
+    <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:17%">Problem</th>
+      <th style="width:28%">Key Concept</th>
+      <th style="width:8%">Test Set</th>
+      <th style="width:11%">USACO Equiv.</th>
+      <th style="width:31%">Recommended X-Camp Course(s)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-lv="0">
+      <td>1</td><td><a href="https://calicojudge.com/public/problems/859/statement" target="_blank">Piezoelectric</a></td>
+      <td>Laps around an L&times;W rectangle to generate E energy at R per step: E / (2(L+W)&middot;R)</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-pre">Pre-Bronze</span></td>
+      <td><span class="xc">101P</span> <span class="xc">102P</span><div class="note">Input/output, integer arithmetic</div></td>
+    </tr>
+    <tr data-lv="0">
+      <td>2</td><td><a href="https://calicojudge.com/public/problems/860/statement" target="_blank">Nah I&rsquo;d Win</a></td>
+      <td>Simulate N fights; power drops by E<sub>i</sub>, restore R every K wins; check power never goes negative</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-pre">Pre-Bronze</span></td>
+      <td><span class="xc">101P</span> <span class="xc">102P</span><div class="note">Loops, counters, conditionals</div></td>
+    </tr>
+    <tr data-lv="1">
+      <td>3</td><td><a href="https://calicojudge.com/public/problems/861/statement" target="_blank">The Big Ben Files</a></td>
+      <td>Censor characters of A with # so the rest spells B (greedy two-pointer subsequence match)</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-bronze">Bronze</span></td>
+      <td><span class="xc">102P</span> <span class="xc">200</span><div class="note">String traversal, two pointers</div></td>
+    </tr>
+    <tr data-lv="1">
+      <td>4</td><td><a href="https://calicojudge.com/public/problems/862/statement" target="_blank">Laser</a></td>
+      <td>Laser steps (+Q, +P) on a wrapping N&times;M grid; find first asteroid hit. N, M &le; 10<sup>3</sup> &rarr; simulate</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-bronze">Bronze</span></td>
+      <td><span class="xc">102P</span> <span class="xc">200</span><div class="note">Simulation with modulo, set lookup</div></td>
+    </tr>
+    <tr class="bonus" data-lv="3">
+      <td>4b1</td><td><a href="https://calicojudge.com/public/problems/863/statement" target="_blank">Laser (Bonus)</a></td>
+      <td>N, M &le; 10<sup>6</sup>, K &le; 10<sup>5</sup>: compute the hit step for each asteroid directly (modular inverse / CRT)</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">501</span> <span class="xc">400H</span><div class="note">Number theory: gcd, modular inverse, CRT (CS501)</div></td>
+    </tr>
+    <tr data-lv="1">
+      <td>5</td><td><a href="https://calicojudge.com/public/problems/864/statement" target="_blank">Grid Fill</a></td>
+      <td>Choose bottom row of a 2&times;N grid to minimize sum of adjacent |differences|. N &le; 3 &rarr; case reasoning</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-bronze">Bronze</span></td>
+      <td><span class="xc">200</span> <span class="xc">201</span><div class="note">Brute force / complete search on small cases</div></td>
+    </tr>
+    <tr class="bonus" data-lv="3">
+      <td>5b1</td><td><a href="https://calicojudge.com/public/problems/865/statement" target="_blank">Grid Fill (Bonus)</a></td>
+      <td>N &le; 10<sup>5</sup>, values up to 10<sup>9</sup>: needs an efficient greedy / DP (median-style) argument</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">301</span> <span class="xc">400H</span><div class="note">DP on sequences (CS301) + greedy proofs (CS400H)</div></td>
+    </tr>
+    <tr data-lv="2">
+      <td>6</td><td><a href="https://calicojudge.com/public/problems/866/statement" target="_blank">Shadow of the Clay</a></td>
+      <td>Given two orthogonal shadows of a shape in an N&times;N&times;N cube (N &le; 10<sup>3</sup>), find max &amp; min possible volume</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-silver">Silver</span></td>
+      <td><span class="xc">300</span><div class="note">Counting per layer, greedy pairing of row/column requirements</div></td>
+    </tr>
+    <tr data-lv="2">
+      <td>7</td><td><a href="https://calicojudge.com/public/problems/867/statement" target="_blank">Criss Cross Applesauce</a></td>
+      <td>Fill an N&times;M grid with 0&ndash;4 so every plus-shaped cross contains each digit once (constructive, mod-5 pattern)</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-silver">Silver</span></td>
+      <td><span class="xc">300</span> <span class="xc">501</span><div class="note">Constructive thinking, modular patterns</div></td>
+    </tr>
+    <tr data-lv="2">
+      <td>8</td><td><a href="https://calicojudge.com/public/problems/868/statement" target="_blank">Mycelium</a></td>
+      <td>Grass spreads every 2 ticks, mycelium every 7; count final mycelium tiles. Coordinates &plusmn;10 &rarr; direct simulation</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-silver">Silver</span></td>
+      <td><span class="xc">202</span><div class="note">Grid BFS / flood simulation</div></td>
+    </tr>
+    <tr class="bonus" data-lv="2">
+      <td>8b1</td><td><a href="https://calicojudge.com/public/problems/869/statement" target="_blank">Mycelium (Bonus 1)</a></td>
+      <td>Coordinates &plusmn;200: efficient multi-source BFS with arrival times</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-silver">Silver</span></td>
+      <td><span class="xc">202</span> <span class="xc">302</span><div class="note">Multi-source BFS, distance arrays</div></td>
+    </tr>
+    <tr class="bonus" data-lv="3">
+      <td>8b2</td><td><a href="https://calicojudge.com/public/problems/870/statement" target="_blank">Mycelium (Bonus 2)</a></td>
+      <td>Coordinates &plusmn;3000: grid too large to simulate naively; reason with Manhattan-distance regions</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">302</span> <span class="xc">400H</span><div class="note">Manhattan geometry, sweep-line counting (CS400H)</div></td>
+    </tr>
+    <tr class="bonus" data-lv="4">
+      <td>8b3</td><td><a href="https://calicojudge.com/public/problems/871/statement" target="_blank">Mycelium (Bonus 3)</a></td>
+      <td>Coordinates &plusmn;4&times;10<sup>8</sup>: closed-form area of regions claimed by each wavefront</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-plat">Platinum</span></td>
+      <td><span class="xc">500H</span> <span class="xc">501</span><div class="note">Computational geometry + math (CS501)</div></td>
+    </tr>
+    <tr data-lv="3">
+      <td>9</td><td><a href="https://calicojudge.com/public/problems/872/statement" target="_blank">TangTangTang</a></td>
+      <td>Items flow through a &le;15&times;15 factory of conveyors / splitters / destroyers; output exact fraction that exits</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">201</span> <span class="xc">301</span> <span class="xc">501</span><div class="note">DFS on a grid graph + probability DP + fraction/gcd arithmetic</div></td>
+    </tr>
+    <tr data-lv="4">
+      <td>10</td><td><a href="https://calicojudge.com/public/problems/873/statement" target="_blank">TwongTwongTwong</a></td>
+      <td>Build a factory (&le;2000 tiles) that collects exactly P/(2<sup>A</sup>&middot;3<sup>B</sup>) of items (constructive)</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-plat">Platinum</span></td>
+      <td><span class="xc">501</span> <span class="xc">602H</span><div class="note">Base-2/3 decomposition + constructive design</div></td>
+    </tr>
+    <tr data-lv="3">
+      <td>11</td><td><a href="https://calicojudge.com/public/problems/877/statement" target="_blank">Average CS186 Class Experience</a></td>
+      <td>Pick K free seats in an N&times;M hall minimizing max pairwise Manhattan distance (binary search + rotated coords)</td><td><span class="ts">Main</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">300</span> <span class="xc">400H</span><div class="note">Binary search on answer, 2D prefix sums, 45&deg; rotation trick</div></td>
+    </tr>
+    <tr class="bonus" data-lv="4">
+      <td>11b1</td><td><a href="https://calicojudge.com/public/problems/878/statement" target="_blank">CS186 Class (Bonus)</a></td>
+      <td>Also minimize total &ldquo;aura loss&rdquo; (occupied seats squeezed past) among optimal choices</td><td><span class="ts bonus">Bonus</span></td>
+      <td><span class="badge b-plat">Platinum</span></td>
+      <td><span class="xc">402H</span> <span class="xc">500H</span><div class="note">Sliding windows + advanced data structures</div></td>
+    </tr>
+    <tr data-lv="3">
+      <td>12E</td><td><a href="https://calicojudge.com/public/problems/879/statement" target="_blank">Multiplication (Easy)</a></td>
+      <td>Choose N values so a[i]&middot;a[j] fits M noisy constraints, may discard D. N &le; 100, M &le; 10<sup>3</sup></td><td><span class="ts">Tier 1</span></td>
+      <td><span class="badge b-gold">Gold</span></td>
+      <td><span class="xc">501</span> <span class="xc">302</span><div class="note">Log transform turns products into sums; graph propagation</div></td>
+    </tr>
+    <tr class="bonus" data-lv="5">
+      <td>12M</td><td><a href="https://calicojudge.com/public/problems/880/statement" target="_blank">Multiplication (Medium)</a></td>
+      <td>N &le; 10<sup>3</sup>, M &le; 10<sup>5</sup>: iterative least-squares refinement with outlier discarding</td><td><span class="ts bonus">Tier 2</span></td>
+      <td><span class="badge b-pp">Platinum+</span></td>
+      <td><span class="xc">602H</span> <span class="xc">603H</span><div class="note">Heuristic optimization, robust regression</div></td>
+    </tr>
+    <tr class="bonus" data-lv="5">
+      <td>12H</td><td><a href="https://calicojudge.com/public/problems/881/statement" target="_blank">Multiplication (Hard)</a></td>
+      <td>N &le; 4000, M &le; 2&times;10<sup>6</sup>, 10 s: fast, memory-efficient optimization at scale</td><td><span class="ts bonus">Tier 3</span></td>
+      <td><span class="badge b-pp">Platinum+</span></td>
+      <td><span class="xc">602H</span> <span class="xc">603H</span><div class="note">Performance-tuned C++ heuristics</div></td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- How to Prepare -->
+  <div class="sh" id="sec-prepare">&#128161; How to Prepare — By Your Current X-Camp Level</div>
+  <p style="font-size:13px; color:#666; margin-bottom:12px;">Click your level to expand recommendations:</p>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>📘 CS101P / CS102P — Python foundations</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>Target Problems 1&ndash;2 (Pre-Bronze). Read input carefully &mdash; both have multiple test cases.</li>
+      <li>Problem 3 (Big Ben Files) is a great stretch: walk through A while tracking your position in B.</li>
+    </ul></div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>📗 CS200 / CS201 / CS202 — Recursion, DFS, BFS</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>Aim for Problems 1&ndash;3 plus the <b>main</b> sets of 4 and 5 &mdash; small constraints mean simulation / brute force works.</li>
+      <li>After CS202, Mycelium main (8) is a direct grid-BFS exercise &mdash; good stretch goal.</li>
+    </ul></div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>📙 CS300 / CS301 / CS302 — Silver-level algorithms</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>Clear every main set through Problem 8 plus Mycelium Bonus 1. Problems 6 (shadows) and 7 (cross pattern) reward careful reasoning over code.</li>
+      <li>Stretch: Problem 9 (TangTangTang) &mdash; DFS through the grid while carrying exact fractions.</li>
+    </ul></div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>📕 CS400H / CS401H / CS501 — Gold-level prep</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>Go after the Gold bonuses: Laser bonus (modular inverse from CS501), Grid Fill bonus, Mycelium Bonus 2, and Problem 11 (binary search + 45&deg; rotation).</li>
+      <li>Grab Problem 12 Easy &mdash; think in logarithms so a[i]&middot;a[j] becomes log a[i] + log a[j].</li>
+    </ul></div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>📓 CS500H / CS502 — Platinum track</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>Push for Platinum sets: Mycelium Bonus 3 (closed-form geometry), Problem 10 (constructive factory), and 11 Bonus.</li>
+      <li>Problem 12 Medium/Hard are open-ended &mdash; any improvement over a baseline earns points, so submit early and iterate.</li>
+    </ul></div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapse(this)"><span>🏆 CS602 / CS603 — US Camp / USACO Platinum</span><span class="arrow">▶</span></div>
+    <div class="collapsible-body"><div class="collapsible-inner"><ul class="tips">
+      <li>All 20 test sets are fair game. Problem 12 Hard (2&times;10<sup>6</sup> constraints, 10 s) is where top teams separate.</li>
+      <li>Split work across your team: one person sweeps mains, others attack bonuses in parallel.</li>
+    </ul></div></div>
+  </div>
+
+  <!-- Course Reference -->
+  <div class="sh" id="sec-courses">&#127979; X-Camp Course Reference</div>
+  <div class="legend">
+    <b>Course number &rarr; what it covers:</b>
+    <div class="legend-grid">
+      <div class="legend-row"><span class="xc">101P/102P</span> Python basics, sorting, lists</div>
+      <div class="legend-row"><span class="xc">200</span> Recursion, divide &amp; conquer</div>
+      <div class="legend-row"><span class="xc">201</span> DFS, backtracking, flood-fill</div>
+      <div class="legend-row"><span class="xc">202</span> BFS, graphs, trees intro</div>
+      <div class="legend-row"><span class="xc">300</span> Prefix sums, binary search, DSU, greedy</div>
+      <div class="legend-row"><span class="xc">301</span> DP I (sequences, knapsack)</div>
+      <div class="legend-row"><span class="xc">302</span> Trees, heaps, shortest path, MST</div>
+      <div class="legend-row"><span class="xc">400H</span> Greedy II, sweep line, segment tree</div>
+      <div class="legend-row"><span class="xc">401H</span> DP II (tree DP, bitmask, digit, range)</div>
+      <div class="legend-row"><span class="xc">402H</span> Linear DS (mono-stack, trie, hashing, strings)</div>
+      <div class="legend-row"><span class="xc">500H</span> Segment tree, BIT, DSU advanced, HLD</div>
+      <div class="legend-row"><span class="xc">501</span> Math (number theory, combinatorics, mod)</div>
+      <div class="legend-row"><span class="xc">502</span> Silver/Gold problem practice &amp; deep-dive</div>
+      <div class="legend-row"><span class="xc">602H/603H</span> Platinum &amp; US Camp level training</div>
+    </div>
+  </div>
+
+  <!-- Resources -->
+  <div class="resources-box" id="sec-resources">
+    <b>&#129504; Resources</b>&nbsp;&nbsp;
+    Official site: <a href="https://calico.cs.berkeley.edu/" target="_blank">calico.cs.berkeley.edu</a> &nbsp;|&nbsp;
+    Spring &rsquo;26 problems: <a href="https://calicojudge.com/public/problems" target="_blank">calicojudge.com/public/problems</a> &nbsp;|&nbsp;
+    X-Camp courses: <a href="https://x-camp.academy/courses/home" target="_blank">x-camp.academy/courses</a> &nbsp;|&nbsp;
+    Study: <a href="https://usaco.guide/" target="_blank">usaco.guide</a>
+  </div>
+
+  <div class="diff-note">
+    <span class="icon">📌</span>
+    <span>
+      <b>Note on Difficulty Levels:</b> USACO-equivalent ratings are given <em>per test set</em> and are
+      <em>cumulative</em> &mdash; a Silver set assumes Bronze skills, a Gold set assumes Bronze + Silver.
+      In CALICO the same problem can span several levels: the main set may be Bronze while its bonus is Gold,
+      so always read every problem and grab the main sets first.
+    </span>
+  </div>
+
+  <div class="footer-note">
+    X-Camp course mapping based on the X-Camp Syllabus for External Contest Levels&rsquo; Comparison. Difficulty ratings are X-Camp estimates.
+    Always confirm contest dates and registration at <a href="https://calico.cs.berkeley.edu/" target="_blank">calico.cs.berkeley.edu</a>.
+  </div>
+
+</div>
+
+<script>
+  new QRCode(document.getElementById("qrcode"), {
+    text: "Discord us", width: 96, height: 96,
+    colorDark: "#1a3a6b", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M
+  });
+
+  function toggleCollapse(header) {
+    var body = header.nextElementSibling;
+    var isOpen = body.classList.contains('open');
+    document.querySelectorAll('.collapsible-body.open').forEach(function(el) {
+      el.classList.remove('open');
+      el.previousElementSibling.classList.remove('open');
+    });
+    if (!isOpen) { body.classList.add('open'); header.classList.add('open'); }
+  }
+
+  // lv: 0 Pre-Bronze, 1 Bronze, 2 Silver, 3 Gold, 4 Platinum, 5 Plat+
+  var levelData = {
+    '101': { max: 0, target: '1–2', stretch: '3 (Big Ben Files)', emoji: '📘',
+             msg: 'Focus on <b>Problems 1–2</b> (Pre-Bronze). Solving both is a great achievement! Problem 3 is a nice stretch — a simple two-pointer walk.' },
+    '200': { max: 1, target: '1–3, 4 main, 5 main', stretch: '8 main (Mycelium)', emoji: '📗',
+             msg: 'Target <b>Problems 1–3</b> and the <b>main sets of 4 and 5</b> — small limits mean simulation / brute force passes. Mycelium main is a BFS stretch after CS202.' },
+    '300': { max: 2, target: 'all mains 1–8 + 8b1', stretch: '9 (TangTangTang)', emoji: '📙',
+             msg: 'Target <b>every main set through Problem 8</b> plus Mycelium Bonus 1. Problem 9 is a strong stretch: grid DFS with exact fractions.' },
+    '400': { max: 3, target: 'all Gold sets (4b, 5b, 8b2, 9, 11, 12E)', stretch: '11 Bonus / 10', emoji: '📕',
+             msg: 'Aim for <b>all Gold sets</b>. Laser bonus uses CS501 modular inverse; Problem 11 uses binary search + rotated coordinates. Try 12 Easy with a log transform.' },
+    '500': { max: 4, target: 'all but 12 Medium/Hard', stretch: '12 Medium', emoji: '📓',
+             msg: 'Push for the <b>Platinum sets</b>: Mycelium Bonus 3, Problem 10, 11 Bonus. Problem 12 Medium is open-ended — iterate on your heuristic.' },
+    '600': { max: 5, target: 'all 20 test sets', stretch: 'Best score on 12 Hard', emoji: '🏆',
+             msg: 'All <b>20 test sets</b> are fair game. Problem 12 Hard is where top teams separate — tune your optimization for speed and quality.' }
+  };
+
+  function showLevel(level, btn) {
+    var d = levelData[level];
+    var rows = document.querySelectorAll('table.diff tbody tr');
+    var count = 0;
+    rows.forEach(function(row) {
+      var ok = parseInt(row.getAttribute('data-lv'), 10) <= d.max;
+      row.classList.toggle('hl', ok);
+      if (ok) count++;
+    });
+    var result = document.getElementById('finder-result');
+    result.innerHTML = d.emoji + ' <b>Target:</b> ' + d.target +
+      ' &nbsp;|&nbsp; <b>Stretch:</b> ' + d.stretch +
+      ' &nbsp;|&nbsp; <b>Solvable:</b> ~' + count + ' of 20 test sets' +
+      '<br>' + d.msg + '<br><span class="note">Matching rows are highlighted green in the problem table.</span>';
+    result.classList.add('visible');
+    document.querySelectorAll('.finder-btns button').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+  }
+
+  var topBtn = document.createElement('button');
+  topBtn.className = 'back-to-top'; topBtn.innerHTML = '↑'; topBtn.title = 'Back to top';
+  topBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  document.body.appendChild(topBtn);
+
+  var sections = document.querySelectorAll('[id^="sec-"]');
+  var tocLinks = document.querySelectorAll('.toc-nav a');
+  window.addEventListener('scroll', function() {
+    topBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    var scrollPos = window.scrollY + 80;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) {
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        var match = document.querySelector('.toc-nav a[href="#' + sec.id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
